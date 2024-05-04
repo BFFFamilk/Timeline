@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (GitHubDetector.isGithubPages(window.location.href)) {
-    const defaultLoad = document.querySelectorAll("default");
-    const timelineLoad = document.querySelectorAll("timeline");
+    const defaultLoad = document.querySelectorAll('[id="default"]');
+    const timelineLoad = document.querySelectorAll('[id="timeline"]');
     defaultLoad.forEach(element => {
       if (element instanceof HTMLAnchorElement) {
         element.href = "/Timeline/";

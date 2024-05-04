@@ -7,51 +7,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const contentDiv = document.getElementById("content");
 
   function renderContent(pathname) {
-    if (GitHubDetector.isGithubPages(window.location.href)) {
-      switch (pathname) {
-        case "/Timeline/":
-          contentDiv!.innerHTML = "<h1>Overview</h1>";
-  
-          updateMetaTags("Home", null!);
-          break;
-        case "/Timeline/timeline":
-          contentDiv!.innerHTML = "<h1>Timeline</h1>";
-  
-          updateMetaTags("Timeline", null!);
-          break;
-        default:
-          const pageNotFound = new PageNotFound(contentDiv!);
-          pageNotFound.render();
-  
-          updateMetaTags(
-            "Page Not Found",
-            "An error occurred while loading the page!"
-          );
-          break;
-      }
-    }
-    else {
-      switch (pathname) {
-        case "/":
-          contentDiv!.innerHTML = "<h1>Overview</h1>";
-  
-          updateMetaTags("Home", null!);
-          break;
-        case "/timeline":
-          contentDiv!.innerHTML = "<h1>Timeline</h1>";
-  
-          updateMetaTags("Timeline", null!);
-          break;
-        default:
-          const pageNotFound = new PageNotFound(contentDiv!);
-          pageNotFound.render();
-  
-          updateMetaTags(
-            "Page Not Found",
-            "An error occurred while loading the page!"
-          );
-          break;
-      }
+    switch (pathname) {
+      case "/":
+        contentDiv!.innerHTML = "<h1>Overview</h1>";
+
+        updateMetaTags("Home", null!);
+        break;
+
+      case "/timeline":
+        contentDiv!.innerHTML = "<h1>Timeline</h1>";
+
+        updateMetaTags("Timeline", null!);
+        break;
+
+      default:
+        const pageNotFound = new PageNotFound(contentDiv!);
+        pageNotFound.render();
+
+        updateMetaTags(
+          "Page Not Found",
+          "An error occurred while loading the page!"
+        );
+        break;
     }
   }
 
@@ -59,14 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     if (GitHubDetector.isGithubPages(window.location.href)) {
       const pathname = event.target.getAttribute("href");
-      window.history.pushState({}, "", pathname);
       renderContent(pathname);
-      console.log(pathname);
     } else {
       const pathname = event.target.getAttribute("href");
       window.history.pushState({}, "", pathname);
       renderContent(pathname);
-      console.log(pathname);
     }
   }
 
@@ -76,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     renderContent(window.location.pathname);
   }
-  console.log(window.location.pathname);
-  console.log(window.location.href);
 
   // Listen for clicks on navigation links
   document.querySelectorAll("nav a").forEach((link) => {
@@ -86,9 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Listen for changes in the browser history
   window.addEventListener("popstate", () => {
-    if (GitHubDetector.isGithubPages(window.location.pathname)) {
-    } else {
-      renderContent(window.location.pathname);
-    }
+    renderContent(window.location.pathname);
   });
 });

@@ -11,7 +11,7 @@ export class Navbar {
       "justify-between",
       "items-center",
       "w-full",
-      "min-h-20",
+      "min-h-20"
     );
     this.element.innerHTML = `
         <div class="pl-5">
@@ -33,14 +33,5 @@ export class Navbar {
 
   render(): void {
     this.parentElement.appendChild(this.element);
-    
-    const defaultLoad = document.getElementById('default') as HTMLAnchorElement;
-    const timelineLoad = document.getElementById('timeline') as HTMLAnchorElement;
-    if (defaultLoad) {
-      defaultLoad.href = "/Timeline/"
-    }
-    if (timelineLoad) {
-      timelineLoad.href = "/Timeline/timeline"
-    }
   }
 }

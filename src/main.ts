@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Parent Target does not exist.");
   }
 
-  const defaultLoad = document.getElementById("default") as HTMLAnchorElement;
-  const timelineLoad = document.getElementById("timeline") as HTMLAnchorElement;
-  if (defaultLoad) {
-    defaultLoad.href = "/Timeline/";
-  }
-  if (timelineLoad) {
-    timelineLoad.href = "/Timeline/timeline";
-  }
+  const defaultLoad = document.querySelectorAll<HTMLAnchorElement>("default");
+  const timelineLoad = document.querySelectorAll<HTMLAnchorElement>("timeline");
+  defaultLoad.forEach((element) => {
+    element.href = "/Timeline/";
+  });
+  timelineLoad.forEach((element) => {
+    element.href = "/Timeline/";
+  });
 });

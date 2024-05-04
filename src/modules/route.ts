@@ -48,7 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     // Initial render based on current route
-    renderContent(window.location.pathname);
+    if (GitHubDetector.isGithubPages(window.location.href)) {
+      
+    } else {
+      renderContent(window.location.pathname);
+    }
     console.log(window.location.pathname);
     console.log(window.location.href);
   

@@ -21,7 +21,7 @@ export class Navbar {
         </div>
         <nav class="flex justify-between items-center">
             <a href="/" class="nav px-5 mx-1 text-md font-medium">Overview</a>
-            <a href="/timeline" onClick="route()" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
+            <a href="/timeline" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
         </nav>
         <div class="pr-5">
             <a href="//github.com/BFFFamilk">

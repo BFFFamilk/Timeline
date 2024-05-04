@@ -1,4 +1,5 @@
 import { PageNotFound } from "../components/PageNotFound";
+import { GitHubDetector } from "./githubDetector";
 import updateMetaTags from "./updateMeta";
 
 //Page Routing for SPA
@@ -29,12 +30,25 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleNavigation(event) {
       event.preventDefault();
       const pathname = event.target.getAttribute('href');
-      window.history.pushState({}, '', pathname);
-      renderContent(pathname);
+
+      if (GitHubDetector.isGithubPages(window.location.href)) {
+        const repoName = GitHubDetector.getRepoNameFromUrl(window.location.href);
+        const githubPathname = repoName + pathname;
+        
+        window.history.pushState({}, '', githubPathname);
+        renderContent(pathname);
+      }
+      else {
+        window.history.pushState({}, '', pathname);
+        renderContent(pathname);
+      }
+      console.log(pathname);
     }
   
     // Initial render based on current route
     renderContent(window.location.pathname);
+    console.log(window.location.pathname);
+    console.log(window.location.href);
   
     // Listen for clicks on navigation links
     document.querySelectorAll('nav a').forEach(link => {

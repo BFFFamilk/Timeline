@@ -15,13 +15,13 @@ export class Navbar {
     );
     this.element.innerHTML = `
         <div class="pl-5">
-            <a href="/">
+            <a id="default" href="/">
             <span class="text-2xl font-black text-black">Timeline</span>
             </a>
         </div>
         <nav class="flex justify-between items-center">
-            <a href="/" class="nav px-5 mx-1 text-md font-medium">Overview</a>
-            <a href="/timeline" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
+            <a id="default" href="/" class="nav px-5 mx-1 text-md font-medium">Overview</a>
+            <a id="timeline" href="/timeline" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
         </nav>
         <div class="pr-5">
             <a href="//github.com/BFFFamilk">
@@ -29,6 +29,15 @@ export class Navbar {
             </a>
         </div>
     `;
+
+    const defaultLoad = document.getElementById('default') as HTMLAnchorElement;
+    const timelineLoad = document.getElementById('timeline') as HTMLAnchorElement;
+    if (defaultLoad) {
+      defaultLoad.href = "/Timeline/"
+    }
+    if (timelineLoad) {
+      timelineLoad.href = "/Timeline/timeline"
+    }
   }
 
   render(): void {

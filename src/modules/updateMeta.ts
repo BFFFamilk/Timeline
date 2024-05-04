@@ -1,9 +1,18 @@
+import { GitHubDetector } from "./githubDetector";
+
 //Update meta tag for web
 export default function updateMetaTags(title: string, description: string) {
   const existingDescriptionMeta = document.querySelector(
     'meta[name="description"]'
   );
-  const defaultTitle = "Timeline";
+  
+  var defaultTitle: string
+  if (GitHubDetector.isGithubPages(window.location.href)) {
+    const repoName = GitHubDetector.getRepoNameFromUrl(window.location.href);
+    defaultTitle = repoName!;
+  } else {
+    defaultTitle = "Timeline Local";
+  }
 
   if (existingDescriptionMeta) {
     existingDescriptionMeta.setAttribute("content", description);

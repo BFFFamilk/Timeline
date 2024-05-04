@@ -41,12 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const pathname = event.target.getAttribute("href");
       window.history.pushState({}, "", pathname);
       renderContent(pathname);
+      console.log(pathname);
     }
   }
 
   // Initial render based on current route
   if (GitHubDetector.isGithubPages(window.location.href)) {
-    renderContent(window.location.pathname);
+    renderContent('/');
   } else {
     renderContent(window.location.pathname);
   }

@@ -42,4 +42,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  console.log(GitHubDetector.isGithubPages(window.location.href));
 });

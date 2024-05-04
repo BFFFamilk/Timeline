@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     timelineLoad.forEach(element => {
       if (element instanceof HTMLAnchorElement) {
-        element.href = "/Timeline/";
+        element.href = "/Timeline/timeline";
       }
     });
   }

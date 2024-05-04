@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (GitHubDetector.isGithubPages(window.location.href)) {
         const pathname = event.target.getAttribute('href');
         const repoName = GitHubDetector.getRepoNameFromUrl(window.location.href);
-        const githubPathname = `${repoName}/${pathname}`;
+        const githubPathname = `${repoName}${pathname}`;
         window.history.pushState({}, '', githubPathname);
-        renderContent(repoName);
+        renderContent(pathname);
         console.log(repoName);
         console.log(githubPathname);
         console.log(pathname)

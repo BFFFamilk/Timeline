@@ -29,20 +29,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
     function handleNavigation(event) {
       event.preventDefault();
-      const pathname = event.target.getAttribute('href');
-
       if (GitHubDetector.isGithubPages(window.location.href)) {
+        const pathname = event.target.getAttribute('href');
         const repoName = GitHubDetector.getRepoNameFromUrl(window.location.href);
-        const githubPathname = repoName + pathname;
-        
+        const githubPathname = `${repoName}/${pathname}`;
         window.history.pushState({}, '', githubPathname);
-        renderContent(pathname);
+        renderContent(repoName);
+        console.log(repoName);
+        console.log(githubPathname);
+        console.log(pathname)
       }
       else {
+        const pathname = event.target.getAttribute('href');
         window.history.pushState({}, '', pathname);
         renderContent(pathname);
+        console.log(pathname);
       }
-      console.log(pathname);
     }
   
     // Initial render based on current route
@@ -57,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Listen for changes in the browser history
     window.addEventListener('popstate', () => {
-      renderContent(window.location.pathname);
+      if (GitHubDetector.isGithubPages(window.location.pathname)) {}
+      else {
+        renderContent(window.location.pathname);
+      }
     });
   });

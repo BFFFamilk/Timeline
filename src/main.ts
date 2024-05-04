@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { DeviceDetector } from "./modules/deviceDetector";
 import { NavbarMobile } from "./components/NavbarMobile";
+import { GitHubDetector } from "./modules/githubDetector";
 
 document.addEventListener("DOMContentLoaded", () => {
   const appElement = document.getElementById("app");
@@ -27,12 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Parent Target does not exist.");
   }
 
-  const defaultLoad = document.querySelectorAll<HTMLAnchorElement>("default");
-  const timelineLoad = document.querySelectorAll<HTMLAnchorElement>("timeline");
-  defaultLoad.forEach((element) => {
-    element.href = "/Timeline/";
-  });
-  timelineLoad.forEach((element) => {
-    element.href = "/Timeline/";
-  });
+  if (GitHubDetector.isGithubPages(window.location.href)) {
+    const defaultLoad = document.querySelectorAll("default");
+    const timelineLoad = document.querySelectorAll("timeline");
+    defaultLoad.forEach(element => {
+      if (element instanceof HTMLAnchorElement) {
+        element.href = "/Timeline/";
+      }
+    });
+    timelineLoad.forEach(element => {
+      if (element instanceof HTMLAnchorElement) {
+        element.href = "/Timeline/";
+      }
+    });
+  }
 });

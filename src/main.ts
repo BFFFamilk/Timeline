@@ -1,22 +1,30 @@
 import "./style.css";
-import github from './assets/github.svg'
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div class="">
-    <div class="flex justify-between items-center w-full min-h-20">
-      <div class="pl-5">
-        <span class="text-2xl font-black text-black">Timeline</span>
-      </div>
-      <nav class="flex justify-between items-center">
-        <a href="#dashboard" class="nav px-5 mx-1 text-md font-medium">Dashboard</a>
-        <a href="#overview" class="nav px-5 mx-1 text-md font-medium">Overview</a>
-        <a href="#timeline" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
-      </nav>
-      <div class="pr-5">
-        <a href="//github.com/BFFFamilk">
-          <img src=${github} alt="github-logo" width=20 />
-        </a>
-      </div>
-    </div>
-  </div>
-`;
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+import { DeviceDetector } from "./modules/deviceDetector";
+import { NavbarMobile } from "./components/NavbarMobile";
+
+document.addEventListener('DOMContentLoaded', () => {
+    const appElement = document.getElementById('app');
+    if (appElement) {
+      //Check device type and render the navbar element
+      const navbar = new Navbar(appElement);
+      const navbarMobile = new NavbarMobile(appElement);
+      if (DeviceDetector.isMobile()) {
+        navbarMobile.render();
+      } else {
+        navbar.render();
+      }
+
+      const content = document.createElement('div');
+      content.id = 'content';
+      appElement.appendChild(content);
+
+      const footer = new Footer(appElement);
+      footer.render();
+    }
+    else {
+      console.error("Parent Target does not exist.");
+    }
+});

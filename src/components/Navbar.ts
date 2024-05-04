@@ -29,7 +29,11 @@ export class Navbar {
             </a>
         </div>
     `;
+  }
 
+  render(): void {
+    this.parentElement.appendChild(this.element);
+    
     const defaultLoad = document.getElementById('default') as HTMLAnchorElement;
     const timelineLoad = document.getElementById('timeline') as HTMLAnchorElement;
     if (defaultLoad) {
@@ -38,9 +42,5 @@ export class Navbar {
     if (timelineLoad) {
       timelineLoad.href = "/Timeline/timeline"
     }
-  }
-
-  render(): void {
-    this.parentElement.appendChild(this.element);
   }
 }

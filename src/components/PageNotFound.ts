@@ -1,17 +1,11 @@
 export class PageNotFound {
-  private element: HTMLElement;
+  private element: HTMLElement | null;
 
-  constructor(private parentElement: HTMLElement) {
-    this.element = document.createElement("div");
-    this.element.classList.add("w-full", "min-h-20");
-    this.element.innerHTML = `
-        <div>
-            <span>Not Found</span>
-        </div>
-    `;
-  }
-
-  render(): void {
-    this.parentElement.appendChild(this.element);
+  constructor(selector: string) {
+      this.element = document.getElementById(selector) as HTMLElement;
+      this.element.classList.add('w-full', "dark:text-white");
+      this.element.innerHTML = `
+      Page Not Found
+      `;
   }
 }

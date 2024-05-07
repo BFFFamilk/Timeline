@@ -1,4 +1,5 @@
-import { GitHubDetector } from "./githubDetector";
+//Import class
+import { Host } from "./host";
 
 //Update meta tag for web
 export default function updateMetaTags(title: string, description: string) {
@@ -7,11 +8,13 @@ export default function updateMetaTags(title: string, description: string) {
   );
   
   var defaultTitle: string
-  if (GitHubDetector.isGithubPages(window.location.href)) {
-    const repoName = GitHubDetector.getRepoNameFromUrl(window.location.href);
+  if (Host.isGithubPages(window.location.href)) {
+    const repoName = Host.getRepoNameFromUrl(window.location.href);
     defaultTitle = repoName!;
+  } else if (Host.isDevMode()) {
+    defaultTitle = "Timeline Dev"
   } else {
-    defaultTitle = "Timeline Local";
+    defaultTitle = "Timeline";
   }
 
   if (existingDescriptionMeta) {
@@ -23,5 +26,5 @@ export default function updateMetaTags(title: string, description: string) {
     document.head.appendChild(newDescriptionMeta);
   }
 
-  document.title = title + " • " + defaultTitle;
+  document.title = title + " 〡 " + defaultTitle;
 }

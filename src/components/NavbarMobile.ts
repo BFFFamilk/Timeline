@@ -1,4 +1,3 @@
-
 export class NavbarMobile {
   private element: HTMLElement;
 

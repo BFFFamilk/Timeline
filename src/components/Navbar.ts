@@ -1,4 +1,4 @@
-import github from "../assets/github.svg";
+import logo from "../assets/logo.png";
 
 export class Navbar {
   private element: HTMLElement;
@@ -6,28 +6,31 @@ export class Navbar {
   constructor(private parentElement: HTMLElement) {
     this.element = document.createElement("div");
     this.element.classList.add(
-      "fixed",
+      "w-full",
       "flex",
       "justify-between",
       "items-center",
-      "w-full",
-      "min-h-20"
+      "dark:text-white",
     );
     this.element.innerHTML = `
-        <div class="pl-5">
-            <a id="default" href="/">
-            <span class="text-2xl font-black text-black">Timeline</span>
-            </a>
-        </div>
-        <nav class="flex justify-between items-center">
-            <a id="default" href="/" class="nav px-5 mx-1 text-md font-medium">Overview</a>
-            <a id="timeline" href="/timeline" class="nav px-5 mx-1 text-md font-medium">Timeline</a>
+      <div class="px-2 py-2 m-2 space-x-5 flex justify-center items-center">
+        <img src=${logo} alt="logo" width="40" class="rounded-full"/>
+        <span class="text-3xl font-extrabold">Timeline<sub><sub>■</sub></sub></span>
+      </div>
+
+      <div>
+        <nav class="relative space-x-10">
+          <a id="route" href="/"         class="nav">Home</a>
+          <a id="route" href="/overview" class="nav">Overview</a>
+          <a id="route" href="/timeline" class="nav">Timeline</a>
         </nav>
-        <div class="pr-5">
-            <a href="//github.com/BFFFamilk">
-            <img src=${github} alt="github-logo" width=20 />
-            </a>
+      </div>
+
+      <div class="pr-5">
+        <div id="dark-mode-btn">
+          <i id="dark-btn-icon"class="fa-solid fa-sun"></i>
         </div>
+      </div>
     `;
   }
 

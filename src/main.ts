@@ -1,9 +1,10 @@
-import "./style.css";
-
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import { DeviceDetector } from "./modules/deviceDetector";
+import { Device } from "./modules/device";
 import { NavbarMobile } from "./components/NavbarMobile";
+
+import './style.css'
+import { DarkMode } from "./modules/darkMode";
 
 document.addEventListener("DOMContentLoaded", () => {
   const appElement = document.getElementById("app");
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Check device type and render the navbar element
     const navbar = new Navbar(appElement);
     const navbarMobile = new NavbarMobile(appElement);
-    if (DeviceDetector.isMobile()) {
+    if (Device.isMobile()) {
       navbarMobile.render();
     } else {
       navbar.render();
@@ -26,4 +27,5 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("Parent Target does not exist.");
   }
+  new DarkMode();
 });

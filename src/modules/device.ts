@@ -1,5 +1,5 @@
 //Checking device types
-export class DeviceDetector {
+export class Device {
     static isMobile(): boolean {
         // Regular expression to match common mobile user-agent strings
         const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;

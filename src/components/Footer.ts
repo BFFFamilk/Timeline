@@ -12,10 +12,11 @@ export class Footer {
       "w-full",
       "bottom-0",
       "text-black",
+      "dark:text-white",
     );
     this.element.innerHTML = `
-            <span>© 2024 BFFFamilk. All right reserved.</span>
-        `;
+      <span>© 2024 BFFFamilk. All right reserved.</span>
+    `;
   }
 
   render(): void {

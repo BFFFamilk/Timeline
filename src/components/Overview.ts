@@ -5,8 +5,7 @@ export class Overview {
     this.element = document.getElementById(selector) as HTMLElement;
     this.element.classList.add("w-full", "dark:text-white");
     this.element.innerHTML = `
-      <div class="absolute top-[15%] ml-10 text-6xl font-medium">Overview</div>
-      <div class=""></div>
+      <div class="absolute top-[12%] ml-10 my-2 text-6xl font-medium">Overview</div>
     `;
   }
 }

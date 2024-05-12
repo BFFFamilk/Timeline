@@ -4,7 +4,7 @@ import { Device } from "./modules/device";
 import { NavbarMobile } from "./components/NavbarMobile";
 
 import "./style.css";
-import { DarkMode } from "./modules/darkMode";
+// import { DarkMode } from "./modules/darkMode";
 
 document.addEventListener("DOMContentLoaded", () => {
   const appElement = document.getElementById("app");

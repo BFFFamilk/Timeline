@@ -3,7 +3,7 @@ import { Footer } from "./components/Footer";
 import { Device } from "./modules/device";
 import { NavbarMobile } from "./components/NavbarMobile";
 
-import './style.css'
+import "./style.css";
 import { DarkMode } from "./modules/darkMode";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const content = document.createElement("div");
     content.id = "content";
+    content.classList.add("relative", "h-screen");
     appElement.appendChild(content);
 
     const footer = new Footer(appElement);
@@ -27,5 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("Parent Target does not exist.");
   }
-  new DarkMode();
+  // new DarkMode();
 });

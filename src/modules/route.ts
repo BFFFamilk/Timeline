@@ -1,5 +1,4 @@
 //Import class
-import { Home } from "../components/Home";
 import { Overview } from "../components/Overview";
 import { Timeline } from "../components/Timeline";
 import { PageNotFound } from "../components/PageNotFound";
@@ -15,25 +14,34 @@ document.addEventListener("DOMContentLoaded", function () {
   function renderContent(pathname) {
     switch (pathname) {
       case "/":
-        const homePage = new Home(contentDiv); homePage
-        updateMetaTags("Home", "Home page");
-        break;
-
-      case "/overview":
-        const overviewPage = new Overview(contentDiv); overviewPage
+        const overviewPage = new Overview(contentDiv);
+        overviewPage;
         updateMetaTags("Overview", "Overview page");
+        activePage('"/"');
         break;
 
       case "/timeline":
-        const timelinePage = new Timeline(contentDiv); timelinePage
+        const timelinePage = new Timeline(contentDiv);
+        timelinePage;
         updateMetaTags("Timeline", "Timeline page");
+        activePage('"/timeline"');
         break;
 
       default:
-        const pageNotFound = new PageNotFound(contentDiv); pageNotFound
+        const pageNotFound = new PageNotFound(contentDiv);
+        pageNotFound;
         updateMetaTags("404", "Page Not Found");
         break;
     }
+  }
+
+  function activePage(href: string) {
+    document.querySelectorAll("nav a").forEach((links) => {
+      links.classList.remove("active");
+      document
+        .querySelector("nav a[href=" + href + "]")
+        ?.classList.add("active");
+    });
   }
 
   function handleNavigation(event) {
@@ -56,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Listen for clicks on navigation links
-  document.querySelectorAll('#route').forEach((link) => {
+  document.querySelectorAll("#route").forEach((link) => {
     link.addEventListener("click", handleNavigation);
   });
 

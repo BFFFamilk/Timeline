@@ -6,13 +6,13 @@ export default function updateMetaTags(title: string, description: string) {
   const existingDescriptionMeta = document.querySelector(
     'meta[name="description"]'
   );
-  
-  var defaultTitle: string
+
+  var defaultTitle: string;
   if (Host.isGithubPages(window.location.href)) {
     const repoName = Host.getRepoNameFromUrl(window.location.href);
     defaultTitle = repoName!;
   } else if (Host.isDevMode()) {
-    defaultTitle = "Timeline Dev"
+    defaultTitle = "Timeline Dev";
   } else {
     defaultTitle = "Timeline";
   }
